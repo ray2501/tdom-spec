@@ -1,0 +1,11 @@
+--- generic/domhtml5.c	2017-08-26 08:57:45.151860805 +0800
++++ generic/domhtml5.c	2017-08-26 08:58:08.767859585 +0800
+@@ -31,7 +31,7 @@
+ \---------------------------------------------------------------------------*/
+ #include <tcl.h>
+ #include <dom.h>
+-#include "gumbo.h"
++#include <gumbo-parser/gumbo.h>
+ #include <assert.h>
+ 
+ static const char *xhtml = "http://www.w3.org/1999/xhtml";
