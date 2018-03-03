@@ -17,8 +17,8 @@
 
 
 Name:           tdom
-%if 0%{!?tclscriptdir:1}
-%define tclscriptdir %_libdir
+%if 0%{!?tcl_noarchdir:1}
+%define tcl_noarchdir %_libdir
 %endif
 Summary:        A XML/DOM/XPath/XSLT Implementation for Tcl
 License:        MPL-1.1
@@ -98,12 +98,12 @@ make test TCLLIBPATH=../../build EXTRA_PATH=../../build
 
 %install
 cd build
-make DESTDIR=%buildroot pkglibdir=%tclscriptdir/%name%version install
+make DESTDIR=%buildroot pkglibdir=%tcl_noarchdir/%name%version install
 chmod 644 %buildroot/%_libdir/*.a
 cd ../extensions/tnc
-make DESTDIR=%buildroot pkglibdir=%tclscriptdir/tnc0.3.0 install
+make DESTDIR=%buildroot pkglibdir=%tcl_noarchdir/tnc0.3.0 install
 cd ../tdomhtml
-make DESTDIR=%buildroot pkglibdir=%tclscriptdir/tdomhtml0.1.0 install
+make DESTDIR=%buildroot pkglibdir=%tcl_noarchdir/tdomhtml0.1.0 install
 
 %clean
 rm -rf %buildroot
@@ -112,7 +112,7 @@ rm -rf %buildroot
 %defattr(-,root,root,-)
 %doc ChangeLog CHANGES README NPL-1_1Final.html LICENSE
 %doc %_mandir/man*/*
-%tclscriptdir/*
+%tcl_noarchdir
 %_libdir/*.so
 
 %files devel
