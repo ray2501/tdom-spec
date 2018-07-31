@@ -1,24 +1,24 @@
 #!/usr/bin/tclsh
 
 set arch "x86_64"
-set base "tDOM-0.9.0"
-set fileurl "http://tdom.org/downloads/tdom-0.9.0-src.tgz"
+set base "tDOM-0.9.1"
+set fileurl "http://tdom.org/downloads/tdom-0.9.1-src.tgz"
 
-set var [list wget $fileurl -O tdom-0.9.0-src.tgz]
+set var [list wget $fileurl -O tdom-0.9.1-src.tgz]
 exec >@stdout 2>@stderr {*}$var
 
 if {[file exists build]} {
     file delete -force build
 }
 
-set var [list tar xzvf tdom-0.9.0-src.tgz]
+set var [list tar xzvf tdom-0.9.1-src.tgz]
 exec >@stdout 2>@stderr {*}$var
 
-file rename -force tdom-0.9.0 tDOM-0.9.0
-set var [list tar czvf tDOM-0.9.0.tgz tDOM-0.9.0]
+file rename -force tdom-0.9.1 $base
+set var [list tar czvf $base.tgz $base]
 exec >@stdout 2>@stderr {*}$var
 
-file delete -force tDOM-0.9.0
+file delete -force $base
 
 file mkdir build/BUILD build/RPMS build/SOURCES build/SPECS build/SRPMS
 file copy -force $base.tgz build/SOURCES
@@ -30,6 +30,6 @@ set buildit [list rpmbuild --target $arch --define "_topdir [pwd]/build" -bb tdo
 exec >@stdout 2>@stderr {*}$buildit
 
 # Remove our source code
-file delete tdom-0.9.0-src.tgz
+file delete tdom-0.9.1-src.tgz
 file delete $base.tgz
 

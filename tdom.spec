@@ -23,7 +23,7 @@ Name:           tdom
 Summary:        A XML/DOM/XPath/XSLT Implementation for Tcl
 License:        MPL-1.1
 Group:          Development/Libraries/Tcl
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Url:            http://tdom.github.com/
 BuildRequires:  autoconf
