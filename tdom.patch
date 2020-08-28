@@ -1,3 +1,13 @@
+--- pkgIndex.tcl.in.orig    2020-08-28 19:11:50.885601190 +0800
++++ pkgIndex.tcl.in 2020-08-28 00:32:27.000000000 +0800
+@@ -2,5 +2,5 @@
+ # Tcl package index file
+ #
+ package ifneeded @PACKAGE_NAME@ @PACKAGE_VERSION@ \
+-    "load [file join $dir @PKG_LIB_FILE@];
++    "load [file join @PKG_LIB_FILE@];
+      source [list [file join $dir tdom.tcl]]"
+
 --- Makefile.in.orig	2020-08-28 15:40:52.131821382 +0800
 +++ Makefile.in	2020-08-28 15:43:13.268040606 +0800
 @@ -333,7 +333,7 @@
