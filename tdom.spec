@@ -21,9 +21,9 @@ Name:           tdom
 %define tcl_noarchdir %_libdir
 %endif
 Summary:        A XML/DOM/XPath/XSLT Implementation for Tcl
-License:        MPL-1.1
+License:        MPL-2.0
 Group:          Development/Libraries/Tcl
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Url:            http://tdom.github.com/
 BuildRequires:  autoconf
@@ -110,7 +110,7 @@ rm -rf %buildroot
 
 %files
 %defattr(-,root,root,-)
-%doc ChangeLog CHANGES README NPL-1_1Final.html LICENSE
+%doc ChangeLog CHANGES README.md MPL_2.0.html LICENSE
 %doc %_mandir/man*/*
 %tcl_noarchdir
 %_libdir/*.so

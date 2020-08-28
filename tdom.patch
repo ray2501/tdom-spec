@@ -1,22 +1,22 @@
---- Makefile.in.orig	2018-07-31 20:48:01.772813108 +0800
-+++ Makefile.in	2018-07-31 20:51:02.489043187 +0800
-@@ -326,7 +326,7 @@
+--- Makefile.in.orig	2020-08-28 15:40:52.131821382 +0800
++++ Makefile.in	2020-08-28 15:43:13.268040606 +0800
+@@ -333,7 +333,7 @@
  
  pkgIndex.tcl-hand:
  	@(echo 'package ifneeded $(PACKAGE_NAME) $(PACKAGE_VERSION) \
 -	"load [list [file join $$dir $(PKG_LIB_FILE)]];\
-+	"load $(PKG_LIB_FILE);\
++    "load $(PKG_LIB_FILE);\
           source [list [file join $$dir tdom.tcl]]"'\
  	) > pkgIndex.tcl
  
-@@ -432,8 +432,8 @@
- 		echo " $(RANLIB) $$p"; \
- 		$(RANLIB) $$p; \
- 	    fi; \
+@@ -450,8 +450,8 @@
+ 	@$(INSTALL_DATA_DIR) $(DESTDIR)$(pkglibdir)
+ 	@list='$(lib_BINARIES)'; for p in $$list; do \
+ 	  if test -f $$p; then \
 -	    echo " $(INSTALL_LIBRARY) $$p $(DESTDIR)$(pkglibdir)/$$p"; \
 -	    $(INSTALL_LIBRARY) $$p $(DESTDIR)$(pkglibdir)/$$p; \
 +	    echo " $(INSTALL_LIBRARY) $$p $(DESTDIR)$(libdir)/$$p"; \
 +	    $(INSTALL_LIBRARY) $$p $(DESTDIR)$(libdir)/$$p; \
- 	    stub=`echo $$p|sed -e "s/.*\(stub\).*/\1/"`; \
  	    ext=`echo $$p|sed -e "s/.*\.//"`; \
  	    if test "x$$ext" = "xdll"; then \
+ 		lib=`basename $$p|sed -e 's/.[^.]*$$//'`.lib; \
